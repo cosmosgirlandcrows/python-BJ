@@ -1,3 +1,8 @@
+''' 
+
+We need to start with a Deck class that generates a deck of cards in a random order.
+
+'''
 import random
 
 
@@ -19,7 +24,9 @@ class Deck(object):
 		suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
 
 
-	
+			#The bug is that if we go through three for-loops to distrivute the three attributes itll get stuck incrementing the value of a card while printing the same card over and over!
+			#there should be a way to do this though, maybe a different order of for loops? 
+
 			
 
 		for x in range(0, len(suits)):
@@ -48,6 +55,7 @@ class Deck(object):
 		return self.numCount
 
 	def incrementnumCount(self):
+
 		self.numCount += 1
 
 
@@ -93,9 +101,9 @@ class Hand(object):
 
 		self.handList = []
 
-	def addCardToHand(self, value):
+	def addCardToHand(self, card):
 
-		self.handList.append(value)
+		self.handList.append(card)
 
 	def gethandList(self):
 
@@ -104,11 +112,48 @@ class Hand(object):
 
 class Player(object):
 
+	def __init__(self, name, credits, luck):
+
+		self.name = name;
+		self.credits = credits;
+		self.luck = luck;
+		self.hand = Hand()
+
 	pass
+
+	def checkCards(self):
+		print(self.hand.gethandList);	
+
+
+
 
 class Dealer(object):
 
+	def __init__(self):
+
+		self.hand = Hand()
+
+	def dealerHas():
+
 	pass
+
+
+def gamePlayLoop:
+
+		gamePlayerName= input('Hey, welcome to The Nexus Casino! Please enter your name: ')
+		gameCredits = input('Thanks ' + gamePlayerName, '! How many credits would you like to start with? >')
+		gameLuck = input('And finally, what would you like your luck to be? >')
+
+
+		dealer = Dealer()
+		player = Player(gamePlayerName, gameCredits, gameLuck)
+
+	while(true):
+
+		break
+
+
+
 
 myDeck = Deck()
 
