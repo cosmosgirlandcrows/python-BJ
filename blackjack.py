@@ -4,7 +4,7 @@ We need to start with a Deck class that generates a deck of cards in a random or
 
 '''
 import random
-
+import sys
 
 class Deck(object):
 
@@ -68,12 +68,6 @@ class Deck(object):
 
 		return returnCard;
 
-	def generateDeckList(self):
-
-		for i in range(0,52):
-
-			self.deckList.append(i)
-
 	def getDeckList(self):
 
 		return self.deckOfCards
@@ -110,6 +104,9 @@ class Hand(object):
 		return self.handList
 
 
+	def checkCardValue(self)
+
+
 class Player(object):
 
 	def __init__(self, name, credits, luck):
@@ -125,6 +122,18 @@ class Player(object):
 		print(self.hand.gethandList);	
 
 
+	def makeBet(self, credits):
+		return credits;
+
+	def addCredits(self, addCredits):
+
+		self.credits += addCredits
+
+	def loseCredit(self, loseCredits):
+
+		self.credits -= loseCredits
+
+
 
 
 class Dealer(object):
@@ -135,36 +144,73 @@ class Dealer(object):
 
 	def dealerHas():
 
+		self.hand.gethandList()
+
 	pass
 
-
-def gamePlayLoop:
-
-		gamePlayerName= input('Hey, welcome to The Nexus Casino! Please enter your name: ')
-		gameCredits = input('Thanks ' + gamePlayerName, '! How many credits would you like to start with? >')
-		gameLuck = input('And finally, what would you like your luck to be? >')
+class Game(object):
 
 
-		dealer = Dealer()
-		player = Player(gamePlayerName, gameCredits, gameLuck)
+		def __init__(self):
 
-	while(true):
+			pass
 
-		break
+		def gameStart(self):
+
+			gamePlayerName="jim" #input('Hey, welcome to The Nexus Casino! Please enter your name: ')
+			gameCredits = 100 #input('Thanks ' + gamePlayerName, '! How many credits would you like to start with? >')
+			gameLuck = 100#input('And finally, what would you like your luck to be? >')
 
 
 
 
-myDeck = Deck()
+			self.dealer = Dealer()
+			self.player = Player(gamePlayerName, gameCredits, gameLuck)
 
-myHand = Hand()
 
-myDeck.generateDeck()
 
-for i in range(0, len(myDeck.deckOfCards)):
 
-	print(myDeck.deckOfCards[i].name + " " + myDeck.deckOfCards[i].suit)
-	
-print(len(myDeck.deckOfCards))
-	
+			x = "play"
+
+			while(x != "play"):
+
+				x = "play"#nput("type 'play' to start playing, or q to quit. >")
+
+				if(x == "q"):
+					sys.exit()
+
+			self.gameLoop1()
+
+		def gameLoop1(self):
+			while(True):
+
+				self.gameDeck = Deck()
+
+				self.gameDeck.generateDeck()
+
+				print("You drew: ")
+				self.generatePlayerCard()
+				self.generatePlayerCard()
+				print("Total value:\n")
+
+
+
+				break
+		def generatePlayerCard(self):
+
+				card = self.gameDeck.exportCard()
+
+					#hell yeah
+				print(">- {} -< ".format(card.getAttribs()[1]))
+
+				self.player.hand.addCardToHand(card)
+
+
+
+
+
+
+
+newGame = Game()
+newGame.gameStart()
 
